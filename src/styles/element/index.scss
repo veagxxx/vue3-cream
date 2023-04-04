@@ -1,0 +1,26 @@
+// styles/element/index.scss
+/* 只需要重写你需要的即可 */
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': $colorPurple,
+    ),
+  ),
+  $menu: (
+    'item-height': 40px,
+    'sub-item-height': 40px,
+  )
+);
+.el-menu-item {
+  border-radius: 8px;
+  margin: 4px 0px;
+  &:hover {
+    background-color: rgba($color: $colorPurple, $alpha: 0.2);
+  }
+}
+.el-menu-item-group__title {
+  padding: 0;
+}
+.el-scrollbar {
+  overflow: unset;
+}
