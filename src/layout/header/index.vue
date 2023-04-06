@@ -1,11 +1,6 @@
 <template>
   <div class="header">
     <div class="header-tool">
-      <div class="header-tool__fold" @click="onCollapse">
-        <el-icon>
-          <component :is="hasCollapse ? 'Expand' : 'Fold'"></component>
-        </el-icon>
-      </div>
       <div class="header-tool__title">
         {{ routeMeta.title }}
       </div>
@@ -39,18 +34,10 @@
 </template>
 <script lang='ts' setup>
   import { SwitchButton, UserFilled } from "@element-plus/icons-vue";
-  import { useSettingStore } from '@/store/index';
   import { useRoute } from "vue-router";
   import { computed, ref } from "vue";
   import SearchInput from "../component/SearchInput.vue";
-  defineProps({
-    hasCollapse: Boolean
-  })
   const route = useRoute()
-  const store = useSettingStore();
-  const onCollapse = () => {
-    store.updateCollapse()
-  }
   const routeMeta = computed(() => route.meta)
   const searchValue = ref<string>('')
 </script>

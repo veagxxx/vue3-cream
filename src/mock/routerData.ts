@@ -13,53 +13,27 @@ export const routerList: Route[] = [
     }
   },
   {
-    id: 2,
-    name: 'Commodity',
-    path: '/commodity',
-    component: 'pages/home/index.vue',
-    role: 'admin',
-    meta: {
-      title: '商品管理',
-      icon: 'commodity',
-      hasAuthority: true,
-    },
-  },
-  {
     id: 3,
-    name: 'Order',
-    path: '/order',
-    component: 'pages/home/index.vue',
+    name: 'Component',
+    path: '/component',
+    component: 'pages/component/index.vue',
     role: 'admin',
     meta: {
-      title: '订单管理',
-      icon: 'order',
-      hasAuthority: true,
+      title: '组件',
+      icon: 'comp',
+      hasAuthority: false,
     },
-    children: [
-      {
-        id: 33,
-        name: 'ZZZZ',
-        path: '/zzzz',
-        component: 'pages/home/index.vue',
-        role: 'admin',
-        meta: {
-          title: '我的订单',
-          icon: 'order',
-          hasAuthority: true,
-        },
-      },
-    ]
   },
   {
     id: 4,
-    name: 'Member',
-    path: '/member',
-    component: 'pages/home/index.vue',
+    name: 'Game',
+    path: '/game',
+    component: 'pages/game/index.vue',
     role: 'admin',
     meta: {
-      title: '会员管理',
-      icon: 'member',
-      hasAuthority: true,
+      title: '游戏',
+      icon: 'game',
+      hasAuthority: false,
     },
   },
   {
@@ -72,18 +46,6 @@ export const routerList: Route[] = [
       title: '系统设置',
       icon: 'setting',
       hasAuthority: true,
-    },
-  },
-  {
-    id: 5,
-    name: 'Game',
-    path: '/game',
-    component: 'pages/game/index.vue',
-    role: 'admin',
-    meta: {
-      title: '游戏',
-      icon: 'game',
-      hasAuthority: false,
     },
   },
 ]

@@ -1,30 +1,32 @@
 <template>
-  <el-table 
-    v-loading="loading"
-    :data="tableData" 
-    :height="height" 
-    :maxHeight="maxHeight"
-    :border="border"
-    :stripe="stripe"
-    :size="size"
-    :lazy="lazy"
-  >
-    <ColumnTree 
-      v-for="item in columns" 
-      :key="item.prop" 
-      :column="item"
-    ></ColumnTree>
-  </el-table>
-  <div class="pagination" v-if="pagination">
-    <el-pagination 
-      :current-page="currentPage"
-      :page-size="pageSize"
-      :page-sizes="pageSizes"
-      :layout="layout"
-      :total="total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange" 
-    />
+  <div class="data-table">
+    <el-table 
+      v-loading="loading"
+      :data="tableData" 
+      :height="height" 
+      :maxHeight="maxHeight"
+      :border="border"
+      :stripe="stripe"
+      :size="size"
+      :lazy="lazy"
+    >
+      <ColumnTree 
+        v-for="item in columns" 
+        :key="item.prop" 
+        :column="item"
+      ></ColumnTree>
+    </el-table>
+    <div class="pagination" v-if="pagination">
+      <el-pagination 
+        :current-page="currentPage"
+        :page-size="pageSize"
+        :page-sizes="pageSizes"
+        :layout="layout"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange" 
+      />
+    </div>
   </div>
 </template>
 <script lang='ts' setup>
@@ -61,6 +63,11 @@
   }
 </script>
 <style lang='scss' scoped> 
+  .data-table {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
   .pagination {
     padding: 6px 6px 0;
   }

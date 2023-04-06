@@ -4,7 +4,11 @@ import {
   // 系列类型的定义后缀都为 SeriesOption
   BarSeriesOption,
   LineChart,
-  LineSeriesOption
+  LineSeriesOption,
+  PieChart,
+  PieSeriesOption,
+  RadarChart,
+  RadarSeriesOption,
 } from 'echarts/charts';
 import {
   TitleComponent,
@@ -18,7 +22,8 @@ import {
   DatasetComponent,
   DatasetComponentOption,
   // 内置数据转换器组件 (filter, sort)
-  TransformComponent
+  TransformComponent,
+  LegendComponent 
 } from 'echarts/components';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -31,6 +36,8 @@ export type ECOption = echarts.ComposeOption<
   | TooltipComponentOption
   | GridComponentOption
   | DatasetComponentOption
+  | PieSeriesOption
+  | RadarSeriesOption
 >;
 
 // 注册必须的组件
@@ -40,8 +47,11 @@ echarts.use([
   GridComponent,
   DatasetComponent,
   TransformComponent,
+  LegendComponent,
   BarChart,
   LineChart,
+  PieChart,
+  RadarChart,
   LabelLayout,
   UniversalTransition,
   CanvasRenderer

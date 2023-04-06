@@ -1,55 +1,37 @@
 <template>
   <div class="home-page">
-    <DataTable
-      :height="height - 64"
-      :columns="tableData.columns"
-      :tableData="tableData.data"
-      :loading="loading"
-      :pagination="true"
-      :currentPage="currentPage"
-      :pageSize="pageSize"
-      :pageSizes="[10, 20, 50, 100]"
-      :total="100"
-      @sizeChange="onSizeChange"
-      @currentChange="onCurrentChange"
-    />
+    <div class="chart-list x-start">
+      <div class="echart-item" v-for="(item, index) in echartList" :key="'chart' + index">
+        <Echart :option="item"/>
+      </div>
+    </div>
   </div>
 </template>
 <script lang='ts' setup>
-  import { useWidthHeight, useLoading } from '@/hooks/index';
-  import { onMounted, reactive, ref } from 'vue';
-  import { columns } from '@/mock/table';
-  import { testApi } from '@/api/test';
-  import DataTable from '@/components/DataTable/index.vue';
-  onMounted(() => {
-    getData()
-  })
-  const { height } = useWidthHeight();
-  const { loading, setLoading } = useLoading();
-  const currentPage = ref<number>(1);
-  const pageSize = ref<number>(20);
-  const tableData = reactive<any>({
-    data: [],
-    columns: columns,
-  })
-  const getData = async () => {
-    setLoading(true);
-    const res = await testApi({
-      pageIndex: currentPage.value,
-      pageSize: pageSize.value,
-    });
-    tableData.data = res.data;
-    setLoading(false);
-  }
-  const onSizeChange = (value: number) => {
-    pageSize.value = value
-  }
-  const onCurrentChange = (value: number) => {
-    currentPage.value = value
-  }
+  import Echart from '@/components/echarts/index.vue';
+  import { echartList } from './index';
 </script>
 <style lang='scss' scoped>
   .home-page {
-    @include main-box;
+    .chart-list {
+      height: 100%;
+      @include flex-box;
+      flex-wrap: wrap;
+    }
+    .echart-item {
+      box-sizing: border-box;
+      max-width: calc(33% - 8px);
+      flex: 0 0 calc(33% - 8px);
+      height: 320px;
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, .12);
+      &:not(:nth-child(3n)) {
+        margin-right: 16px;
+      }
+      &:not(:nth-child(-n + 3)) {
+        margin-top: 16px;
+      }
+    }
   }
 </style>

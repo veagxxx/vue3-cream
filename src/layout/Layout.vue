@@ -3,16 +3,14 @@
     <Aside :hasCollapse="hasCollapse" :menusList="routerList"></Aside>
     <el-container class="main-container">
       <el-header>
-        <Header :hasCollapse="hasCollapse"></Header>
+        <Header></Header>
       </el-header>
       <el-main>
-        <el-scrollbar>
-          <router-view v-slot="{ Component, route }">
-            <transition name="fade" mode="out-in">
-              <component :is="Component" :key="route.path"/>
-            </transition>
-          </router-view>
-        </el-scrollbar>
+        <router-view v-slot="{ Component, route }">
+          <transition name="fade" mode="out-in">
+            <component :is="Component" :key="route.path"/>
+          </transition>
+        </router-view>
       </el-main> 
     </el-container>
   </el-container>
@@ -40,10 +38,10 @@
   .main-container {
     height: 100%;
     .el-main {
-      padding: 0px;
-      overflow: auto;
-      overflow-x: hidden;
+      width: 100%;
+      padding: $mainPadding;
       background: $mainBgColor;
+      overflow: auto;
     }
   }
 }
