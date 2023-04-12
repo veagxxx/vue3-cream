@@ -40,6 +40,7 @@
     fill: currentColor;
     font-size: v-bind('fontSize.default');
     overflow: hidden;
+    outline: none;
     &.svg-icon-large {
       font-size: v-bind('fontSize.large');
       height: v-bind('fontSize.large');

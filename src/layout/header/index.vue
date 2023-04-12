@@ -15,6 +15,13 @@
         </el-tooltip>
       </div>
       <div class="header-tool__item">
+        <el-tooltip place="bottom-start" content="Github">
+          <!-- <el-icon> -->
+            <svg-icon icon-class="github" size="large"></svg-icon>
+          <!-- </el-icon> -->
+        </el-tooltip>
+      </div>
+      <div class="header-tool__item">
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-avatar
@@ -50,7 +57,7 @@
     padding: 0 16px;
     .el-icon {
       vertical-align: middle;
-      font-size: 18px;
+      font-size: 20px;
     }
     .header-tool, .header-tool {
       height: 100%;

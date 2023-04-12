@@ -1,13 +1,13 @@
-import { App } from "vue";
+import { App, DirectiveBinding } from "vue";
 import { useUserStore } from '@/store/index';
 // 权限
 const vPermission = {
-  mounted(el: HTMLElement, binding: any) {
+  mounted(el: HTMLElement, binding: DirectiveBinding) {
     const { value } = binding;
     const userStore = useUserStore();
     const roles: string[] = userStore.user.roles;
     if (value && value instanceof Array && value.length > 0) {
-      const hasPermission = roles.find((role: string) => {
+      const hasPermission = roles.some((role: string) => {
         return value.includes(role);
       })
       if (!hasPermission) {

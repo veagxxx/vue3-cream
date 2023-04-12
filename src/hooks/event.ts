@@ -1,15 +1,20 @@
 import { onMounted, onUnmounted } from "vue"
-/**
- * 创建/销毁事件 hook
- * @param target 目标元素
- * @param event 事件名称
- * @param callback 回调
- */
 export const useEventListener = (
   target: Window | HTMLElement, 
   event: string, 
-  callback: EventListenerOrEventListenerObject
+  listener: any,
+  options?: boolean,
 ) => {
-  onMounted(() => target.addEventListener(event, callback))
-  onUnmounted(() => target.removeEventListener(event, callback))
+  if (target === window) {
+    onMounted(() => target.addEventListener(event, listener, options));
+    onUnmounted(() => target.removeEventListener(event, listener, options));
+  }
+  const register = () => {
+    target.addEventListener(event, listener, options);
+  }
+  const stop = () => {
+    target.removeEventListener(event, listener, options);
+  }
+  register();
+  return stop;
 }
